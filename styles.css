@@ -1,36 +1,26 @@
 * {
     box-sizing: border-box;
-
     margin: 0;
-
     padding: 0;
-
     font-family: sans-serif;
 }
 
 body {
     min-height: 100vh;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
 .container {
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
 }
 
 h1 {
     text-align: center;
-
     margin: 1em;
 }
 
@@ -38,19 +28,12 @@ h1 {
 
 button {
     border: none;
-
     transition: all 0.3s ease;
-
     text-align: center;
-
     overflow: hidden;
-
     margin: 1em;
-
     padding: 0.5em;
-
     border-radius: 10px;
-
     cursor: pointer;
 }
 
@@ -58,36 +41,24 @@ button {
 
 #game-board {
     display: grid;
-
     width: 300px;
-
     margin: 0 auto;
-
     height: 300px;
-
     grid-template-areas:
         "pos-11 pos-12 pos-13"
         "pos-21 pos-22 pos-23"
         "pos-31 pos-32 pos-33";
-
     border: 3px solid black;
 }
 
 #game-board div {
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     font-size: 50px;
-
     height: 100px;
-
     width: 100px;
-
     border: 3px solid black;
 }
 
