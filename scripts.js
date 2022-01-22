@@ -18,7 +18,8 @@ square.forEach((element) => {
     element.addEventListener("click", (event) => {
         let cellClass = event.target.className.slice(0, 5);
         console.log(cellClass);
-        console.log(event.target.className);
+        cells[cellClass] = "x";
+        console.log(cells);
     });
 });
 
