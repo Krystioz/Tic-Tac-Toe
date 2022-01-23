@@ -9,18 +9,32 @@ const cells = [
     { id: 8, state: "empty" },
     { id: 9, state: "empty" },
 ];
-console.log(cells);
+
 const square = document.querySelectorAll(".pole");
 const restart = document.querySelector("button");
-console.log(square);
+const resultTah = document.querySelector(".result");
+
+function handleReset() {
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].state = "empty";
+        if ((cells[i].state = "empty")) {
+            square[i].textContent = "";
+        }
+    }
+}
 
 square.forEach((element) => {
     element.addEventListener("click", (event) => {
         let cellNumber = event.target.className.slice(0, 1);
         // let cellClass = event.target.className.slice(2, 7);
         cells[cellNumber - 1].state = "x";
+        if (event.target.textContent) {
+            return;
+        }
+        resultTah.textContent = "";
         computerMove();
         render();
+        checkForWin();
     });
 });
 
@@ -34,10 +48,10 @@ restart.addEventListener(
                 square[i].textContent = "";
             }
         }
-        // cells.forEach((elem) => (elem.state = "empty"));
     }
 );
 
+//print text content of cells object to html squares
 function render() {
     for (let i = 0; i < cells.length; i++) {
         if (cells[i].state == "x") {
@@ -49,17 +63,87 @@ function render() {
     }
 }
 
+//computer moves on random empty cell
+
 function computerMove() {
     let random = randomZeroToEight();
-    if (cells[random].state == "empty") {
+    let howMuchEmpty = cells.filter(
+        (cell) => cell.state == "empty"
+    );
+    if (howMuchEmpty.length <= 1) {
+        return;
+    } else if (cells[random].state == "empty") {
         cells[random].state = "o";
     } else if (cells[random].state == "x") {
-        console.log(`occupied by x ${random}`);
+        computerMove();
     } else if (cells[random].state == "o") {
-        console.log(`occupied by o ${random}`);
+        computerMove();
     }
 }
 
 function randomZeroToEight() {
     return Math.floor(Math.random() * 8);
+}
+
+function checkForWin() {
+    let isWin;
+    for (let i = 0; i < cells.length; i++) {
+        if (
+            cells[0].state == "x" &&
+            cells[1].state == "x" &&
+            cells[2].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[6].state == "x" &&
+            cells[7].state == "x" &&
+            cells[8].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[3].state == "x" &&
+            cells[4].state == "x" &&
+            cells[5].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[0].state == "x" &&
+            cells[3].state == "x" &&
+            cells[6].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[1].state == "x" &&
+            cells[4].state == "x" &&
+            cells[7].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[2].state == "x" &&
+            cells[5].state == "x" &&
+            cells[8].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[0].state == "x" &&
+            cells[4].state == "x" &&
+            cells[8].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        } else if (
+            cells[2].state == "x" &&
+            cells[3].state == "x" &&
+            cells[6].state == "x"
+        ) {
+            resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        }
+    }
 }

@@ -18,6 +18,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+div {
+    cursor: default;
+}
 
 h1 {
     text-align: center;
