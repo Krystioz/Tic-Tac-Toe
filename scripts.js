@@ -35,6 +35,7 @@ square.forEach((element) => {
         computerMove();
         render();
         checkForWin();
+        checkDraw();
     });
 });
 
@@ -143,6 +144,88 @@ function checkForWin() {
             cells[6].state == "x"
         ) {
             resultTah.textContent = "Wygrałeś !";
+            handleReset();
+        }
+    }
+}
+
+function checkDraw() {
+    for (let i = 0; i < cells.length; i++) {
+        if (
+            cells[0].state != "empty" &&
+            cells[1].state != "empty" &&
+            cells[2].state != "empty" &&
+            cells[3].state != "empty" &&
+            cells[4].state != "empty" &&
+            cells[5].state != "empty" &&
+            cells[6].state != "empty" &&
+            cells[7].state != "empty" &&
+            cells[8].state != "empty"
+        ) {
+            resultTah.textContent = "Remis !";
+            handleReset();
+        }
+    }
+}
+
+function checkForWin() {
+    let isWin;
+    for (let i = 0; i < cells.length; i++) {
+        if (
+            cells[0].state == "o" &&
+            cells[1].state == "o" &&
+            cells[2].state == "o"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();
+        } else if (
+            cells[6].state == "o" &&
+            cells[7].state == "o" &&
+            cells[8].state == "o"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();
+        } else if (
+            cells[3].state == "o" &&
+            cells[4].state == "o" &&
+            cells[5].state == "o"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();
+        } else if (
+            cells[0].state == "o" &&
+            cells[3].state == "o" &&
+            cells[6].state == "o"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();
+        } else if (
+            cells[1].state == "o" &&
+            cells[4].state == "o" &&
+            cells[7].state == "o"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();
+        } else if (
+            cells[2].state == "o" &&
+            cells[5].state == "o" &&
+            cells[8].state == "o"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();
+        } else if (
+            cells[0].state == "x" &&
+            cells[4].state == "x" &&
+            cells[8].state == "x"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
+            handleReset();s
+        } else if (
+            cells[2].state == "x" &&
+            cells[3].state == "x" &&
+            cells[6].state == "x"
+        ) {
+            resultTah.textContent = "Przegrałeś !";
             handleReset();
         }
     }
