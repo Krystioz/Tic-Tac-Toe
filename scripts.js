@@ -35,6 +35,7 @@ square.forEach((element) => {
         computerMove();
         render();
         checkForWin();
+        checkForlose();
         checkDraw();
     });
 });
@@ -168,7 +169,7 @@ function checkDraw() {
     }
 }
 
-function checkForWin() {
+function checkForlose() {
     let isWin;
     for (let i = 0; i < cells.length; i++) {
         if (
@@ -214,16 +215,17 @@ function checkForWin() {
             resultTah.textContent = "Przegrałeś !";
             handleReset();
         } else if (
-            cells[0].state == "x" &&
-            cells[4].state == "x" &&
-            cells[8].state == "x"
+            cells[0].state == "o" &&
+            cells[4].state == "o" &&
+            cells[8].state == "o"
         ) {
             resultTah.textContent = "Przegrałeś !";
-            handleReset();s
+            handleReset();
+            s;
         } else if (
-            cells[2].state == "x" &&
-            cells[3].state == "x" &&
-            cells[6].state == "x"
+            cells[2].state == "o" &&
+            cells[3].state == "o" &&
+            cells[6].state == "o"
         ) {
             resultTah.textContent = "Przegrałeś !";
             handleReset();
